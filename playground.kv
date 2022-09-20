@@ -1,0 +1,92 @@
+<PlaygroundScreen>:
+    content_pane:cp
+    editor_pane: ep
+    kivy_tree: kvtree
+    BoxLayout:
+        orientation:'vertical'
+        ActionBar:
+            pos_hint:{'top':1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: 'kivy itachi'
+                    with_previous: False
+                    ActionOverflow:
+                    ActionButton:
+                        text: 'Save'
+                        on_release:root.save()
+                    ActionButton:
+                        text: 'Open'
+                        on_release:root.open()
+
+        BoxLayout:
+            BoxLayout:
+                size_hint: (0.3,1)
+                TreeView:
+                    id : kvtree
+            BoxLayout:
+                size_hint:(0.7,1)
+                orientation: 'vertical'
+                BoxLayout:
+                    id: cp
+                TextInput:
+                    id: ep
+                    text:"#type your kivy here:\nLabel:\n\ttext:'hello salah'"
+                    on_text: root.on_text(args[1])
+
+<PlaygroundFileSelector>:
+    fileChooser:filechooser
+    #pathBar: path_bar
+    BoxLayout:
+        orientation: 'vertical'
+        FileChooserListView:
+            id: filechooser
+            on_selection: root.selected(args)
+        BoxLayout:
+            size_hint:(1,None)
+            height:50
+            TextInput:
+                size_hint:(0.5,1)
+                text: str(root.path)
+                on_text:root.on_text(args[1])
+            Button:
+                size_hint:(0.25,1)
+                text:'Save'
+                on_release: root.save()
+            Button:
+                size_hint:(0.25,1)
+                text:'Cancel'
+                on_release: root.cancel()
+
+<PlaygroundFileSelectorOpener>:
+    fileChooser:filechooser
+    #pathBar: path_bar
+    BoxLayout:
+        orientation: 'vertical'
+        FileChooserListView:
+            id: filechooser
+            on_selection: root.selected(args)
+        BoxLayout:
+            size_hint:(1,None)
+            height:50
+            TextInput:
+                size_hint:(0.5,1)
+                text: str(root.path)
+                on_text:root.on_text(args[1])
+            Button:
+                size_hint:(0.25,1)
+                text:'Open'
+                on_release: root.open()
+            Button:
+                size_hint:(0.25,1)
+                text:'Cancel'
+                on_release: root.cancel()
+
+
+
+
+
+
+
+
+
